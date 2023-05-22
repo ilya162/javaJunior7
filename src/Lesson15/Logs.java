@@ -7,5 +7,7 @@ public class Logs {
     public static void main(String[] args) {
         LOGGER.error("Error message");
 
+        System.out.println("Привет");
+
     }
 }
