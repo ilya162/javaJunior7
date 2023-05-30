@@ -2,9 +2,11 @@ package Lesson13;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+
+
 
 public class StringUtilsCustom implements StringUtils {
+
 
     public double div(String number1, String number2) throws NullPointerException, NumberFormatException, ArithmeticException {
         if (number1 == null || number2 == null) {
@@ -25,41 +27,53 @@ public class StringUtilsCustom implements StringUtils {
     }
 
 
+    @Override
     public int[] findWord(String text, String word) throws NullPointerException {
-
-        ArrayList<String> my = new ArrayList<String>(Collections.singleton(text));
-//        String s = text;
-        String[] s = my.get(0).split( "word" );
-//
-
-//        int index ;
-//        for (int i=0; i<my.size();i++) {
-//            if (text.indexOf()) {
-//                index=i;
-//                int [] res = new int[i];
-                System.out.println(s);
-
-
-        return new int[0];
+        if (text == null || word == null) {
+            throw new NullPointerException("text== null||word==null");
+        }
+        String[] s = text.split(" ");
+        int count = 0;
+        for (String s1 : s) {
+            if (s1.equals(word)) {
+                count++;
+            }
+        }
+        if (count == 0) {
+            return null;
+        }
+        int[] res = new int[count];
+        count = 0;
+        for (int i = 0; i < s.length; i++) {
+            if (s[i].equals(word)) {
+                res[count] = i;
+                count++;
+            }
+        }
+        return res;
     }
 
 
 
 
 
-//        System.out.println(myList.indexOf(word));
-
-//        return new int[myList.indexOf(word)];
-
-
-
-
-
-
-
+    @Override
     public double[] findNumbers(String text) throws CustomException {
-        return new double[0];
+        String[] s = text.split(" ");
+        double[] res = new double[100];
+        int count = 0;
+        for (int i = 0; i < s.length; i++) {
+            try {
+                res[i] = Double.parseDouble(s[i]);
+            }
+            catch (Exception e){
+            }
+        }
+        return res;
     }
-
-
 }
+
+
+
+
+
